@@ -39,19 +39,23 @@
     },
     "modules": {
       "type": "array",
+      "description": "Entry points for the extension.",
       "items": [
         {
           "type": "object",
           "properties": {
             "location": {
               "type": "string",
-              "enum": ["workflow.ticket.type.credit-request.detail"]
+              "enum": ["workflow.ticket.type.credit-request.detail"],
+              "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like."
             },
             "key": {
-              "type": "string"
+              "type": "string",
+              "description": "Unique identifier for this extension module. Other modules may use this value as a reference."
             },
             "urlPath": {
-              "type": "string"
+              "type": "string",
+              "description": "The URL path of the extension. This is used to determine the page being loaded on this module."
             },
             "queryParameters": {
               "type": "object",
