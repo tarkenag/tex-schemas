@@ -6,7 +6,8 @@
   "properties": {
     "name": {
       "description": "The unique name of the extension. This is defined upon creating the extension and must not be changed later.",
-      "type": "string"
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$",
     },
     "displayName": {
       "description": "The human-made name of the extension that will be shown to users. This is defined upon creating the extension and can be changed later.",
@@ -39,7 +40,7 @@
     },
     "modules": {
       "type": "array",
-      "description": "Entry points for the extension.",
+      "description": "Entry points to the extension UI.",
       "items": [
         {
           "type": "object",
@@ -51,6 +52,7 @@
             },
             "key": {
               "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$",
               "description": "Unique identifier for this extension module. Other modules may use this value as a reference."
             },
             "urlPath": {
