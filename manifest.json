@@ -46,7 +46,7 @@
           "properties": {
             "location": {
               "type": "string",
-              "enum": ["workflow.ticket.type.credit-request.detail"],
+              "enum": ["workflow.ticket.type.credit-request.detail", "global.navigation-bar.menu"],
               "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like."
             },
             "key": {
