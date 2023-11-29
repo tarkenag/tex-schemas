@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "object",
   "properties": {
     "name": {
@@ -39,31 +39,35 @@
       "type": "string"
     },
     "modules": {
-      "type": "array",
       "description": "Entry points to the extension UI.",
+      "type": "array",
       "items": [
         {
           "type": "object",
           "properties": {
             "location": {
+              "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like.",
               "type": "string",
-              "enum": ["workflow.ticket.type.credit-request.detail", "global.navigation-bar.menu"],
-              "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like."
+              "enum": ["workflow.ticket.type.credit-request.detail", "global.navigation-bar.menu"]
             },
             "key": {
+              "description": "Unique identifier for this extension module. Other modules may use this value as a reference.",
               "type": "string",
-              "pattern": "^[a-zA-Z0-9_-]+$",
-              "description": "Unique identifier for this extension module. Other modules may use this value as a reference."
+              "pattern": "^[a-zA-Z0-9_-]+$"
             },
             "urlPath": {
-              "type": "string",
-              "description": "The URL path of the extension. This is used to determine the page being loaded on this module."
+              "description": "The URL path of the extension. This is used to determine the page being loaded on this module.",
+              "type": "string"
             },
             "queryParameters": {
+              "description": "The query parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`.",
               "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
+              "patternProperties": {
+                "^[a-zA-Z0-9_-]+$": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
             },
             "attributes": {
               "type": "object",
