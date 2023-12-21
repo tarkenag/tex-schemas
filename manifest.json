@@ -7,7 +7,7 @@
     "name": {
       "description": "The unique name of the extension. This is defined upon creating the extension and must not be changed later.",
       "type": "string",
-      "pattern": "^[a-zA-Z0-9_-]+$"
+      "pattern": "^[a-zA-Z0-9_.-]+$"
     },
     "displayName": {
       "description": "The human-made name of the extension that will be shown to users. This is defined upon creating the extension and can be changed later.",
@@ -53,7 +53,7 @@
             "key": {
               "description": "Unique identifier for this extension module.",
               "type": "string",
-              "pattern": "^[a-zA-Z0-9_-]+$"
+              "pattern": "^[a-zA-Z0-9_.-]+$"
             },
             "urlPath": {
               "description": "The URL path of the extension. This is used to determine the page being loaded on this module.",
@@ -63,7 +63,7 @@
               "description": "The query parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
               "type": "object",
               "patternProperties": {
-                "^[a-zA-Z0-9_-]+$": {
+                "^[a-zA-Z0-9_.-]+$": {
                   "type": "string"
                 }
               },
