@@ -26,7 +26,7 @@
       "type": "boolean"
     },
     "apiVersion": {
-      "description": "The version of the Tarken Extension API that the extension manifest is referencing.",
+      "description": "The version of the Tarken Extension API that the extension manifest is using. Use \"*\" if your extension don't care about it.",
       "type": "string"
     },
     "baseUrl": {
