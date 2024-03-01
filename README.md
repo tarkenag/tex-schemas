@@ -7,3 +7,14 @@ Add the following entry to your `tex-manifest.json` file:
 ```
 
 You can also use [this online tool](https://jsonschemalint.com/#!/version/draft-07/markup/json) to validate some JSON against the above schema.
+
+## How this repository works
+
+Each branch represents each supported version of the schema following the [semantic versioning](https://semver.org/) rules but only the major slice (eg: `v0` must covers every version under `0.`).
+
+## Development guide
+
+### Create a new version of the schema
+
+1. Create a new branch for that version from the default branch of the repository, and
+2. Update the [`./manifest.json`](./manifest.json) file following the [JSONSchema](https://json-schema.org) spec. Don't forget to update the `.version` field.
