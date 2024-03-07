@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "object",
   "properties": {
     "name": {
@@ -31,16 +31,66 @@
     },
     "baseUrl": {
       "description": "The base URL of the extension. Must be HTTPS when deployed to production.",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "uri"
     },
     "description": {
       "description": "The description of the extension. This is defined upon creating the extension and can be changed later.",
       "type": "string"
     },
+    "webhooks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "before:hub.workflow.credit-request.transition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "name",
+              "url"
+            ]
+          }
+        },
+        "after:hub.workflow.credit-request.transition": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": [
+              "name",
+              "url"
+            ]
+          }
+        }
+      }
+    },
     "modules": {
       "description": "A list of entry points to the extension.",
-      "type": "array",
+      "type": [
+        "array",
+        "null"
+      ],
       "items": [
         {
           "type": "object",
@@ -205,9 +255,7 @@
     "vendorName",
     "private",
     "apiVersion",
-    "baseUrl",
     "description",
-    "displayName",
-    "modules"
+    "displayName"
   ]
 }
