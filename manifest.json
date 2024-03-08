@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "type": "object",
   "properties": {
     "name": {
@@ -47,25 +47,7 @@
       "properties": {
         "before:hub.workflow.credit-request.transition": {
           "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "url": {
-                "type": "string",
-                "format": "uri"
-              }
-            },
-            "required": [
-              "name",
-              "url"
-            ]
-          }
-        },
-        "after:hub.workflow.credit-request.transition": {
-          "type": "array",
+          "description": "The webhooks that will be triggered before the transition of a credit request between workflow phases as a precondition to perform that action.",
           "items": {
             "type": "object",
             "properties": {
