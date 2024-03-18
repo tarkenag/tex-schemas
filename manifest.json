@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "type": "object",
   "properties": {
     "name": {
@@ -91,7 +91,9 @@
                 "workflow.ticket.type.credit-request.detail",
                 "hub.workflow.ticket.type.credit-request.form.create.tooling",
                 "global.navigation-bar.menu",
-                "hub.customer-detail-tabs.navigation-bar.top"
+                "hub.customer-detail-tabs.navigation-bar.top",
+
+                "type:hub.organization.customer.smart-form-field"
               ]
             },
             "key": {
@@ -257,6 +259,36 @@
                       "entryLabel",
                       "description",
                       "icon"
+                    ]
+                  }
+                },
+                "required": [
+                  "attributes"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:hub.organization.customer.smart-form-field"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "description"
                     ]
                   }
                 },
