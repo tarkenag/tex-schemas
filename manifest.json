@@ -108,7 +108,25 @@
               "type": "object",
               "patternProperties": {
                 "^[a-zA-Z0-9_-]+$": {
-                  "type": "string"
+                  "type": "string",
+                  "anyOf": [
+                    {
+                      "pattern": "^([^{]|[{][^{]).*$|^.*([^}]|[^}][}])$",
+                      "description": "Matches any value not surrounded by '{{' and '}}'"
+                    },
+                    {
+                      "pattern": "^{{( )*organizationId( )*}}$"
+                    },
+                    {
+                      "pattern": "^{{( )*customerId( )*}}$"
+                    },
+                    {
+                      "pattern": "^{{( )*ticketId( )*}}$"
+                    },
+                    {
+                      "pattern": "^{{( )*accessToken( )*}}$"
+                    }
+                  ]
                 }
               },
               "additionalProperties": false
