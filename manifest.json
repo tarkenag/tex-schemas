@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "object",
   "properties": {
     "name": {
@@ -108,7 +108,25 @@
               "type": "object",
               "patternProperties": {
                 "^[a-zA-Z0-9_-]+$": {
-                  "type": "string"
+                  "type": "string",
+                  "anyOf": [
+                    {
+                      "pattern": "^([^{]|[{][^{]).*$|^.*([^}]|[^}][}])$",
+                      "description": "Matches any value not surrounded by '{{' and '}}'"
+                    },
+                    {
+                      "pattern": "^\\{\\{( )*organizationId( )*\\}\\}$"
+                    },
+                    {
+                      "pattern": "^\\{\\{( )*customerId( )*\\}\\}$"
+                    },
+                    {
+                      "pattern": "^\\{\\{( )*ticketId( )*\\}\\}$"
+                    },
+                    {
+                      "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
+                    }
+                  ]
                 }
               },
               "additionalProperties": false
