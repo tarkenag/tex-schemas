@@ -115,16 +115,16 @@
                       "description": "Matches any value not surrounded by '{{' and '}}'"
                     },
                     {
-                      "pattern": "^{{( )*organizationId( )*}}$"
+                      "pattern": "^\\{\\{( )*organizationId( )*\\}\\}$"
                     },
                     {
-                      "pattern": "^{{( )*customerId( )*}}$"
+                      "pattern": "^\\{\\{( )*customerId( )*\\}\\}$"
                     },
                     {
-                      "pattern": "^{{( )*ticketId( )*}}$"
+                      "pattern": "^\\{\\{( )*ticketId( )*\\}\\}$"
                     },
                     {
-                      "pattern": "^{{( )*accessToken( )*}}$"
+                      "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
                     }
                   ]
                 }
