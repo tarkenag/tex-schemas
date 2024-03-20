@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "type": "object",
   "properties": {
     "name": {
@@ -107,7 +107,7 @@
               "description": "The query parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
               "type": "object",
               "patternProperties": {
-                "^[a-zA-Z0-9_-]+$": {
+                "^[a-zA-Z0-9_.-]+$": {
                   "type": "string",
                   "anyOf": [
                     {
@@ -125,6 +125,22 @@
                     },
                     {
                       "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "urlHash": {
+              "description": "The hash parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
+              "type": "object",
+              "patternProperties": {
+                "^[a-zA-Z0-9_.-]+$": {
+                  "type": "string",
+                  "anyOf": [
+                    {
+                      "pattern": "^{{.+}}$",
+                      "description": "Matches any value surrounded by '{{' and '}}'"
                     }
                   ]
                 }
