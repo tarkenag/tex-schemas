@@ -1,22 +1,26 @@
 import Ajv from "ajv";
-const ajv = new Ajv();
+import addFormats from "ajv-formats";
 
-const schema = {
-  type: "object",
-  properties: {
-    foo: { type: "integer" },
-    bar: { type: "string", nullable: true },
-  },
-  required: ["foo"],
-  additionalProperties: false,
-};
+describe("JSON following the schema spec.", () => {
+  let jsonValidator: Ajv;
 
-// validate is a type guard for MyData - type is inferred from schema type
+  beforeAll(() => {
+    jsonValidator = new Ajv({
+      strict: false,
+      verbose: true,
+    });
+    addFormats(jsonValidator);
+  });
 
-describe("JSON following the schema", () => {
-  it("should pass when using every TEx manifest feature", () => {
-    const validate = ajv.compile(schema);
+  it("should pass when using every TEx manifest feature", async () => {
+    const useCase = (
+      await import("./use-cases/full-featured--tex-manifest.json")
+    ).default;
 
-    expect(validate({ foo: 1 })).toBe(true);
+    const schema = await import("../manifest.json");
+
+    const validate = jsonValidator.compile(schema);
+
+    expect(validate(useCase)).toBe(true);
   });
 });

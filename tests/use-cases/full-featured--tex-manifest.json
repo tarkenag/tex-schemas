@@ -1,0 +1,78 @@
+{
+  "$schema": "../../manifest.json",
+  "name": "full-featured--tex-manifest",
+  "private": true,
+  "version": "0.0.2",
+  "apiVersion": "*",
+  "vendorName": "Tarkenag",
+  "description": "Minha descrição",
+  "displayName": "full featured tex-manifest",
+  "baseUrl": "https://google.com",
+  "modules": [
+    {
+      "key": "0",
+      "urlPath": "/",
+      "location": "hub.customer-detail-tabs.navigation-bar.top",
+      "attributes": {
+        "icon": "tex:analytics",
+        "entryLabel": "Teste 1",
+        "description": "non-empty"
+      },
+      "queryParameters": {
+        "a": "A"
+      }
+    },
+    {
+      "key": "1",
+      "urlPath": "/",
+      "location": "hub.customer-detail-tabs.navigation-bar.top",
+      "attributes": {
+        "icon": "tex:",
+        "entryLabel": "Teste 2",
+        "description": "Exemplo 2 para a nova location com access token"
+      },
+      "queryParameters": {
+        "a": "B"
+      }
+    },
+    {
+      "key": "2",
+      "urlPath": "/",
+      "location": "hub.customer-detail-tabs.navigation-bar.top",
+      "attributes": {
+        "icon": "",
+        "entryLabel": "Teste 3",
+        "description": "Exemplo sem ícone"
+      },
+      "queryParameters": {}
+    },
+    {
+      "key": "3",
+      "urlPath": "/",
+      "location": "global.navigation-bar.menu",
+      "attributes": {
+        "description": "Exemplo de menu",
+        "entryLabel": "Teste 4"
+      }
+    },
+    {
+      "key": "4",
+      "location": "hub.workflow.ticket.type.credit-request.form.create.tooling",
+      "attributes": {
+        "description": "Exemplo de tooling",
+        "entryLabel": "Teste 5"
+      },
+      "urlPath": "/"
+    },
+    {
+      "key": "5",
+      "urlPath": "/",
+      "location": "workflow.ticket.type.credit-request.detail",
+      "attributes": {
+        "description": "Exemplo de detail",
+        "entryLabel": "Teste 6"
+      },
+      "queryParameters": {}
+    }
+  ]
+}
