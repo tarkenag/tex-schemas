@@ -141,7 +141,7 @@
                   "type": "string",
                   "anyOf": [
                     {
-                      "pattern": "^{{.+}}$",
+                      "pattern": "^[{][{].+[}][}]$",
                       "description": "Matches any value surrounded by '{{' and '}}'"
                     }
                   ]

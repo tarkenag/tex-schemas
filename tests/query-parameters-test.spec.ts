@@ -20,7 +20,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{  }}",
@@ -36,7 +41,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{ organizationid }}",
@@ -52,7 +62,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{ organizationId }}",
@@ -68,7 +83,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{ customerId }}",
@@ -84,7 +104,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{ ticketId }}",
@@ -100,7 +125,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       ava: "{{ accessToken }}",
@@ -116,7 +146,12 @@ describe("JSON following the schema spec but changing query parameters.", () => 
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
+
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
 
     useCase.modules[0].queryParameters = {
       q1: "literal",
