@@ -1,0 +1,31 @@
+{
+  "name": "tex-schemas",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --config ./vitest.config.ts run",
+    "watch/test": "vitest --config ./vitest.config.ts watch",
+    "test:coverage": "vitest --config ./vitest.config.ts run --coverage",
+    "posttest:coverage": "npx http-server './coverage'",
+    "test-ui": "vitest --config ./vitest.config.ts --ui watch",
+    "format": "prettier --write \"tests/**/*.ts\"",
+    "typecheck": "vitest --typecheck"
+  },
+  "egnines": {
+    "node": ">=16"
+  },
+  "author": "Micael Levi L. C.",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^18.19.26",
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/ui": "^1.4.0",
+    "ajv": "^8.12.0",
+    "ajv-formats": "^2.1.1",
+    "prettier": "^3.2.5",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.2",
+    "vitest": "^1.4.0"
+  }
+}
