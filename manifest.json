@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "object",
   "properties": {
     "name": {
@@ -139,7 +139,7 @@
                   "type": "string",
                   "anyOf": [
                     {
-                      "pattern": "^{{.+}}$",
+                      "pattern": "^[{][{].+[}][}]$",
                       "description": "Matches any value surrounded by '{{' and '}}'"
                     }
                   ]
