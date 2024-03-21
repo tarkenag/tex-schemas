@@ -19,8 +19,12 @@ describe("JSON following the schema spec.", () => {
 
     const schema = await import("../manifest.json");
 
-    const validate = jsonValidator.compile(schema);
+    const createValidator = () => jsonValidator.compile(schema);
 
+    // Ensure that the compilation of the schema is successful
+    expect(() => createValidator()).not.toThrow();
+
+    const validate = createValidator();
     expect(validate(useCase)).toBe(true);
   });
 });
