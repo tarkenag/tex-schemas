@@ -80,7 +80,7 @@
                 "hub.workflow.ticket.type.credit-request.form.create.tooling",
                 "global.navigation-bar.menu",
                 "hub.customer-detail-tabs.navigation-bar.top",
-                
+
                 "type:organization.customer.credit-request.widget",
                 "type:organization.customer.widget"
               ]
@@ -194,13 +194,13 @@
                     "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
                     "type": "object",
                     "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
+                      "title": {
+                        "description": "Optional title of the widget",
                         "type": "string",
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel"]
+                    "required": []
                   }
                 },
                 "required": ["attributes"]
@@ -220,13 +220,13 @@
                     "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
                     "type": "object",
                     "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
+                      "title": {
+                        "description": "Optional title of the widget",
                         "type": "string",
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel"]
+                    "required": []
                   }
                 },
                 "required": ["attributes"]
