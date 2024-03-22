@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.3.4",
+  "version": "0.5.0",
   "type": "object",
   "properties": {
     "name": {
@@ -31,10 +31,7 @@
     },
     "baseUrl": {
       "description": "The base URL of the extension. Must be HTTPS when deployed to production.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "uri"
     },
     "description": {
@@ -42,10 +39,7 @@
       "type": "string"
     },
     "webhooks": {
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "properties": {
@@ -68,18 +62,12 @@
             "format": "uri"
           }
         },
-        "required": [
-          "name",
-          "url"
-        ]
+        "required": ["name", "url"]
       }
     },
     "modules": {
       "description": "A list of entry points to the extension.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": ["array", "null"],
       "items": [
         {
           "type": "object",
@@ -91,7 +79,10 @@
                 "workflow.ticket.type.credit-request.detail",
                 "hub.workflow.ticket.type.credit-request.form.create.tooling",
                 "global.navigation-bar.menu",
-                "hub.customer-detail-tabs.navigation-bar.top"
+                "hub.customer-detail-tabs.navigation-bar.top",
+                
+                "type:organization.customer.credit-request.widget",
+                "type:organization.customer.widget"
               ]
             },
             "key": {
@@ -183,15 +174,62 @@
                         "minLength": 1
                       }
                     },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
+                    "required": ["entryLabel", "description"]
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.credit-request.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "entryLabel": {
+                        "description": "Text displayed as an entry point to access the extension.",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": ["entryLabel"]
+                  }
+                },
+                "required": ["attributes"]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "entryLabel": {
+                        "description": "Text displayed as an entry point to access the extension.",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": ["entryLabel"]
+                  }
+                },
+                "required": ["attributes"]
               }
             },
             {
@@ -219,15 +257,10 @@
                         "minLength": 1
                       }
                     },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
+                    "required": ["entryLabel", "description"]
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
               }
             },
             {
@@ -255,15 +288,10 @@
                         "minLength": 1
                       }
                     },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
+                    "required": ["entryLabel", "description"]
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
               }
             },
             {
@@ -296,24 +324,14 @@
                         "minLength": 1
                       }
                     },
-                    "required": [
-                      "entryLabel",
-                      "description",
-                      "icon"
-                    ]
+                    "required": ["entryLabel", "description", "icon"]
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
               }
             }
           ],
-          "required": [
-            "location",
-            "key",
-            "urlPath"
-          ]
+          "required": ["location", "key", "urlPath"]
         }
       ]
     }
