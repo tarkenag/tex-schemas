@@ -127,6 +127,15 @@
                     },
                     {
                       "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
+                    },
+                    {
+                      "$comment": "For autocomplete rather than validation",
+                      "enum": [
+                        "{{ organizationId }}",
+                        "{{ customerId }}",
+                        "{{ ticketId }}",
+                        "{{ accessToken }}"
+                      ]
                     }
                   ]
                 }
