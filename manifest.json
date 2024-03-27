@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "type": "object",
   "properties": {
     "name": {
@@ -93,7 +93,9 @@
                 "global.navigation-bar.menu",
                 "hub.customer-detail-tabs.navigation-bar.top",
 
-                "type:hub.organization.customer.smart-form-field"
+                "type:hub.organization.customer.smart-form-field",
+                "type:organization.customer.credit-request.widget",
+                "type:organization.customer.widget"
               ]
             },
             "key": {
@@ -338,6 +340,58 @@
                 "required": [
                   "attributes"
                 ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.credit-request.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "description": "Optional title of the widget",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "required": ["attributes"]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "description": "Optional title of the widget",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "required": ["attributes"]
               }
             }
           ],
