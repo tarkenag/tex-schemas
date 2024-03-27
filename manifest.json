@@ -92,6 +92,7 @@
                 "hub.workflow.ticket.type.credit-request.form.create.tooling",
                 "global.navigation-bar.menu",
                 "hub.customer-detail-tabs.navigation-bar.top",
+
                 "type:hub.organization.customer.smart-form-field",
                 "type:organization.customer.credit-request.widget",
                 "type:organization.customer.widget"
@@ -364,9 +365,7 @@
                     "required": []
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
               }
             },
             {
@@ -392,9 +391,7 @@
                     "required": []
                   }
                 },
-                "required": [
-                  "attributes"
-                ]
+                "required": ["attributes"]
               }
             }
           ],
