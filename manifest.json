@@ -31,7 +31,10 @@
     },
     "baseUrl": {
       "description": "The base URL of the extension. Must be HTTPS when deployed to production.",
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "format": "uri"
     },
     "description": {
@@ -39,7 +42,10 @@
       "type": "string"
     },
     "webhooks": {
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "items": {
         "type": "object",
         "properties": {
@@ -62,12 +68,18 @@
             "format": "uri"
           }
         },
-        "required": ["name", "url"]
+        "required": [
+          "name",
+          "url"
+        ]
       }
     },
     "modules": {
       "description": "A list of entry points to the extension.",
-      "type": ["array", "null"],
+      "type": [
+        "array",
+        "null"
+      ],
       "items": [
         {
           "type": "object",
@@ -80,7 +92,7 @@
                 "hub.workflow.ticket.type.credit-request.form.create.tooling",
                 "global.navigation-bar.menu",
                 "hub.customer-detail-tabs.navigation-bar.top",
-
+                "type:hub.organization.customer.smart-form-field",
                 "type:organization.customer.credit-request.widget",
                 "type:organization.customer.widget"
               ]
@@ -174,62 +186,15 @@
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel", "description"]
+                    "required": [
+                      "entryLabel",
+                      "description"
+                    ]
                   }
                 },
-                "required": ["attributes"]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "type:organization.customer.credit-request.widget"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "title": {
-                        "description": "Optional title of the widget",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": []
-                  }
-                },
-                "required": ["attributes"]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "type:organization.customer.widget"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "title": {
-                        "description": "Optional title of the widget",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": []
-                  }
-                },
-                "required": ["attributes"]
+                "required": [
+                  "attributes"
+                ]
               }
             },
             {
@@ -257,10 +222,15 @@
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel", "description"]
+                    "required": [
+                      "entryLabel",
+                      "description"
+                    ]
                   }
                 },
-                "required": ["attributes"]
+                "required": [
+                  "attributes"
+                ]
               }
             },
             {
@@ -288,10 +258,15 @@
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel", "description"]
+                    "required": [
+                      "entryLabel",
+                      "description"
+                    ]
                   }
                 },
-                "required": ["attributes"]
+                "required": [
+                  "attributes"
+                ]
               }
             },
             {
@@ -324,14 +299,110 @@
                         "minLength": 1
                       }
                     },
-                    "required": ["entryLabel", "description", "icon"]
+                    "required": [
+                      "entryLabel",
+                      "description",
+                      "icon"
+                    ]
                   }
                 },
-                "required": ["attributes"]
+                "required": [
+                  "attributes"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:hub.organization.customer.smart-form-field"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "description": {
+                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "description"
+                    ]
+                  }
+                },
+                "required": [
+                  "attributes"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.credit-request.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "description": "Optional title of the widget",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "required": [
+                  "attributes"
+                ]
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "location": {
+                    "const": "type:organization.customer.widget"
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "attributes": {
+                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "description": "Optional title of the widget",
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": []
+                  }
+                },
+                "required": [
+                  "attributes"
+                ]
               }
             }
           ],
-          "required": ["location", "key", "urlPath"]
+          "required": [
+            "location",
+            "key",
+            "urlPath"
+          ]
         }
       ]
     }
