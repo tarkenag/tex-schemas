@@ -40,7 +40,7 @@
       "urlPath": "/",
       "location": "hub.customer-detail-tabs.navigation-bar.top",
       "attributes": {
-        "icon": "",
+        "icon": "t",
         "entryLabel": "Teste 3",
         "description": "Exemplo sem ícone"
       },

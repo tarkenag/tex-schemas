@@ -80,328 +80,297 @@
         "array",
         "null"
       ],
-      "items": [
-        {
-          "type": "object",
-          "properties": {
-            "location": {
-              "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like.",
-              "type": "string",
-              "enum": [
-                "workflow.ticket.type.credit-request.detail",
-                "hub.workflow.ticket.type.credit-request.form.create.tooling",
-                "global.navigation-bar.menu",
-                "hub.customer-detail-tabs.navigation-bar.top",
+      "items": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "description": "The location of the extension. This is used to determine where the extension will be loaded and what the context object will look like.",
+            "type": "string",
+            "enum": [
+              "workflow.ticket.type.credit-request.detail",
+              "hub.workflow.ticket.type.credit-request.form.create.tooling",
+              "global.navigation-bar.menu",
+              "hub.customer-detail-tabs.navigation-bar.top",
 
-                "type:hub.organization.customer.smart-form-field",
-                "type:organization.customer.credit-request.widget",
-                "type:organization.customer.widget"
-              ]
+              "type:hub.organization.customer.smart-form-field",
+              "type:organization.customer.credit-request.widget",
+              "type:organization.customer.widget"
+            ]
+          },
+          "key": {
+            "description": "Unique identifier for this extension module.",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]+$"
+          },
+          "urlPath": {
+            "description": "The URL path of the extension. This is used to determine the page being loaded on this module.",
+            "type": "string"
+          },
+          "queryParameters": {
+            "description": "The query parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
+            "type": "object",
+            "patternProperties": {
+              "^[a-zA-Z0-9_.-]+$": {
+                "type": "string",
+                "anyOf": [
+                  {
+                    "pattern": "^([^{]|[{][^{]).*$|^.*([^}]|[^}][}])$",
+                    "description": "Matches any value not surrounded by '{{' and '}}'"
+                  },
+                  {
+                    "pattern": "^\\{\\{( )*organizationId( )*\\}\\}$"
+                  },
+                  {
+                    "pattern": "^\\{\\{( )*customerId( )*\\}\\}$"
+                  },
+                  {
+                    "pattern": "^\\{\\{( )*ticketId( )*\\}\\}$"
+                  },
+                  {
+                    "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
+                  },
+                  {
+                    "$comment": "For autocomplete rather than validation",
+                    "enum": [
+                      "{{ organizationId }}",
+                      "{{ customerId }}",
+                      "{{ ticketId }}",
+                      "{{ accessToken }}"
+                    ]
+                  }
+                ]
+              }
             },
-            "key": {
-              "description": "Unique identifier for this extension module.",
-              "type": "string",
-              "pattern": "^[a-zA-Z0-9_-]+$"
+            "additionalProperties": false
+          },
+          "urlHash": {
+            "description": "The hash parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
+            "type": "object",
+            "patternProperties": {
+              "^[a-zA-Z0-9_.-]+$": {
+                "type": "string",
+                "anyOf": [
+                  {
+                    "pattern": "^[{][{].+[}][}]$",
+                    "description": "Matches any value surrounded by '{{' and '}}'"
+                  }
+                ]
+              }
             },
-            "urlPath": {
-              "description": "The URL path of the extension. This is used to determine the page being loaded on this module.",
-              "type": "string"
+            "additionalProperties": false
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "workflow.ticket.type.credit-request.detail"
+                }
+              }
             },
-            "queryParameters": {
-              "description": "The query parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
-              "type": "object",
-              "patternProperties": {
-                "^[a-zA-Z0-9_.-]+$": {
-                  "type": "string",
-                  "anyOf": [
-                    {
-                      "pattern": "^([^{]|[{][^{]).*$|^.*([^}]|[^}][}])$",
-                      "description": "Matches any value not surrounded by '{{' and '}}'"
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "entryLabel": {
+                      "description": "Text displayed as an entry point to access the extension.",
+                      "type": "string",
+                      "minLength": 1
                     },
-                    {
-                      "pattern": "^\\{\\{( )*organizationId( )*\\}\\}$"
-                    },
-                    {
-                      "pattern": "^\\{\\{( )*customerId( )*\\}\\}$"
-                    },
-                    {
-                      "pattern": "^\\{\\{( )*ticketId( )*\\}\\}$"
-                    },
-                    {
-                      "pattern": "^\\{\\{( )*accessToken( )*\\}\\}$"
-                    },
-                    {
-                      "$comment": "For autocomplete rather than validation",
-                      "enum": [
-                        "{{ organizationId }}",
-                        "{{ customerId }}",
-                        "{{ ticketId }}",
-                        "{{ accessToken }}"
-                      ]
+                    "description": {
+                      "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                      "type": "string",
+                      "minLength": 1
                     }
-                  ]
+                  },
+                  "required": ["entryLabel", "description"]
                 }
               },
-              "additionalProperties": false
-            },
-            "urlHash": {
-              "description": "The hash parameters that should be passed to extension loaded's page. Template values should starts with `{{` and ending with `}}`. The schema of this field is defined by the `location` field.",
-              "type": "object",
-              "patternProperties": {
-                "^[a-zA-Z0-9_.-]+$": {
-                  "type": "string",
-                  "anyOf": [
-                    {
-                      "pattern": "^[{][{].+[}][}]$",
-                      "description": "Matches any value surrounded by '{{' and '}}'"
-                    }
-                  ]
-                }
-              },
-              "additionalProperties": false
+              "required": ["attributes"]
             }
           },
-          "allOf": [
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "workflow.ticket.type.credit-request.detail"
-                  }
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "hub.workflow.ticket.type.credit-request.form.create.tooling"
                 }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
-                  }
-                },
-                "required": [
-                  "attributes"
-                ]
               }
             },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "hub.workflow.ticket.type.credit-request.form.create.tooling"
-                  }
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "entryLabel": {
+                      "description": "Text displayed as an entry point to access the extension.",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["entryLabel", "description"]
                 }
               },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
-                  }
-                },
-                "required": [
-                  "attributes"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "global.navigation-bar.menu"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": [
-                      "entryLabel",
-                      "description"
-                    ]
-                  }
-                },
-                "required": [
-                  "attributes"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "hub.customer-detail-tabs.navigation-bar.top"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "entryLabel": {
-                        "description": "Text displayed as an entry point to access the extension.",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "description": {
-                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
-                        "type": "string",
-                        "minLength": 1
-                      },
-                      "icon": {
-                        "description": "The identifier to the icon that will be displayed for this extension module.",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": [
-                      "entryLabel",
-                      "description",
-                      "icon"
-                    ]
-                  }
-                },
-                "required": [
-                  "attributes"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "type:hub.organization.customer.smart-form-field"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "description": {
-                        "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": [
-                      "description"
-                    ]
-                  }
-                },
-                "required": [
-                  "attributes"
-                ]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "type:organization.customer.credit-request.widget"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "title": {
-                        "description": "Optional title of the widget",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": []
-                  }
-                },
-                "required": ["attributes"]
-              }
-            },
-            {
-              "if": {
-                "properties": {
-                  "location": {
-                    "const": "type:organization.customer.widget"
-                  }
-                }
-              },
-              "then": {
-                "properties": {
-                  "attributes": {
-                    "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
-                    "type": "object",
-                    "properties": {
-                      "title": {
-                        "description": "Optional title of the widget",
-                        "type": "string",
-                        "minLength": 1
-                      }
-                    },
-                    "required": []
-                  }
-                },
-                "required": ["attributes"]
-              }
+              "required": ["attributes"]
             }
-          ],
-          "required": [
-            "location",
-            "key",
-            "urlPath"
-          ]
-        }
-      ]
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "global.navigation-bar.menu"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "entryLabel": {
+                      "description": "Text displayed as an entry point to access the extension.",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["entryLabel", "description"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "hub.customer-detail-tabs.navigation-bar.top"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "entryLabel": {
+                      "description": "Text displayed as an entry point to access the extension.",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "icon": {
+                      "description": "The identifier to the icon that will be displayed for this extension module.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["entryLabel", "description", "icon"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "type:hub.organization.customer.smart-form-field"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["description"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "type:organization.customer.credit-request.widget"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "description": "Optional title of the widget",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": []
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "type:organization.customer.widget"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "description": "Optional title of the widget",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": []
+                }
+              },
+              "required": ["attributes"]
+            }
+          }
+        ],
+        "required": ["location", "key", "urlPath"]
+      }
     }
   },
   "required": [
