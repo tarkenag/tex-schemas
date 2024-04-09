@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "type": "object",
   "properties": {
     "name": {
@@ -92,7 +92,7 @@
               "global.navigation-bar.menu",
               "hub.customer-detail-tabs.navigation-bar.top",
 
-              "type:hub.organization.customer.smart-form-field",
+              "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
               "type:organization.customer.credit-request.widget",
               "type:organization.customer.widget"
             ]
@@ -294,7 +294,7 @@
             "if": {
               "properties": {
                 "location": {
-                  "const": "type:hub.organization.customer.smart-form-field"
+                  "const": "type:hub.workflow.ticket.type.credit-request.form.smart-form-field"
                 }
               }
             },
