@@ -77,7 +77,7 @@
     {
       "key": "6--smart-form-field",
       "urlPath": "/",
-      "location": "type:hub.organization.customer.smart-form-field",
+      "location": "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
       "attributes": {
         "description": "Exemplo de detail"
       }
