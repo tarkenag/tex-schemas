@@ -94,7 +94,9 @@
 
               "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
               "type:organization.customer.credit-request.widget",
-              "type:organization.customer.widget"
+              "type:organization.customer.widget",
+
+              "type:hub.financing.ticket.type.financing-request.form.smart-form-field"
             ]
           },
           "key": {
@@ -363,6 +365,32 @@
                     }
                   },
                   "required": []
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "type:hub.financing.ticket.type.financing-request.form.smart-form-field"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "description": "Text to help disambiguate the extensions.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["description"]
                 }
               },
               "required": ["attributes"]

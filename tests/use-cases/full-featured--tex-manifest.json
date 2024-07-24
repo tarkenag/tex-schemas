@@ -81,6 +81,14 @@
       "attributes": {
         "description": "Exemplo de detail"
       }
+    },
+    {
+      "key": "7--smart-form-field",
+      "urlPath": "/",
+      "location": "type:hub.financing.ticket.type.financing-request.form.smart-form-field",
+      "attributes": {
+        "description": "Exemplo de detail"
+      }
     }
   ]
 }
