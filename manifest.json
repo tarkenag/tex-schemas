@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "type": "object",
   "properties": {
     "name": {
@@ -91,6 +91,7 @@
               "hub.workflow.ticket.type.credit-request.form.create.tooling",
               "global.navigation-bar.menu",
               "hub.customer-detail-tabs.navigation-bar.top",
+              "workflow.ticket.type.credit-request.pdf-report",
 
               "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
               "type:organization.customer.credit-request.widget",
@@ -391,6 +392,32 @@
                     }
                   },
                   "required": ["description"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "workflow.ticket.type.credit-request.pdf-report"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "sectionLabel": {
+                      "description": "Text displayed as the name for the pdf report section on the menu button and pdf",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["entryLabel", "description", "icon"]
                 }
               },
               "required": ["attributes"]
