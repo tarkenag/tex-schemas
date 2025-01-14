@@ -31,10 +31,7 @@
     },
     "baseUrl": {
       "description": "The base URL of the extension. Must be HTTPS when deployed to production.",
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": ["string", "null"],
       "format": "uri"
     },
     "description": {
@@ -42,10 +39,7 @@
       "type": "string"
     },
     "webhooks": {
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "properties": {
@@ -68,18 +62,12 @@
             "format": "uri"
           }
         },
-        "required": [
-          "name",
-          "url"
-        ]
+        "required": ["name", "url"]
       }
     },
     "modules": {
       "description": "A list of entry points to the extension.",
-      "type": [
-        "array",
-        "null"
-      ],
+      "type": ["array", "null"],
       "items": {
         "type": "object",
         "properties": {
@@ -417,7 +405,7 @@
                       "minLength": 1
                     }
                   },
-                  "required": ["entryLabel", "description", "icon"]
+                  "required": ["sectionLabel"]
                 }
               },
               "required": ["attributes"]
