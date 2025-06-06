@@ -89,6 +89,16 @@
       "attributes": {
         "description": "Exemplo de detail"
       }
+    },
+    {
+      "key": "8",
+      "urlPath": "/",
+      "location": "workflow.ticket.type.document-formalization.detail",
+      "attributes": {
+        "description": "Exemplo de detail",
+        "entryLabel": "Teste 8"
+      },
+      "queryParameters": {}
     }
   ]
 }
