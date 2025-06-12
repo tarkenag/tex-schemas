@@ -207,6 +207,11 @@
                       "description": "Text displayed in a tooltip for the extension's entry point to help disambiguate.",
                       "type": "string",
                       "minLength": 1
+                    },
+                    "icon": {
+                      "description": "The identifier to the icon that will be displayed for this extension module.",
+                      "type": "string",
+                      "minLength": 1
                     }
                   },
                   "required": ["entryLabel", "description"]
