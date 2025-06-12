@@ -95,6 +95,7 @@
       "urlPath": "/",
       "location": "workflow.ticket.type.document-formalization.detail",
       "attributes": {
+        "icon": "tex:analytics",
         "description": "Exemplo de detail",
         "entryLabel": "Teste 8"
       },
