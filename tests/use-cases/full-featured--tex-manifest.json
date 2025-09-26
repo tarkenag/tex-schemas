@@ -100,6 +100,11 @@
         "entryLabel": "Teste 8"
       },
       "queryParameters": {}
+    },
+    {
+      "key": "9",
+      "urlPath": "/",
+      "location": "hub.workflow.ticket.type.credit-request.decision.create.tooling"
     }
   ]
 }
