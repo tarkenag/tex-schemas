@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "The manifest of a Tarken Extension. This is the file that is used to define an extension for https://tarken.ag platform. More on this here: https://stealthvb.atlassian.net/l/cp/1jc1HmA1",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "type": "object",
   "properties": {
     "name": {
@@ -82,6 +82,7 @@
               "global.navigation-bar.menu",
               "hub.customer-detail-tabs.navigation-bar.top",
               "workflow.ticket.type.credit-request.pdf-report",
+              "workflow.ticket.type.document-formalization.clearing-house",
 
               "type:hub.workflow.ticket.type.credit-request.form.smart-form-field",
               "type:organization.customer.credit-request.widget",
@@ -444,6 +445,32 @@
                     }
                   },
                   "required": ["sectionLabel"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "workflow.ticket.type.document-formalization.clearing-house"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "description": {
+                      "description": "Text to help disambiguate the extensions.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["description"]
                 }
               },
               "required": ["attributes"]
