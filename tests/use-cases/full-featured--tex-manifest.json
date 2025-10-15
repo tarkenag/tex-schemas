@@ -105,6 +105,14 @@
       "key": "9",
       "urlPath": "/",
       "location": "hub.workflow.ticket.type.credit-request.decision.create.tooling"
+    },
+    {
+      "key": "10",
+      "urlPath": "/clearing-house",
+      "location": "workflow.ticket.type.document-formalization.clearing-house",
+      "attributes": {
+        "description": "Clearing house integration for document formalization"
+      }
     }
   ]
 }
