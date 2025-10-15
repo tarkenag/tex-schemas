@@ -34,14 +34,6 @@
       "queryParameters": {
         "a": "B"
       }
-    },
-    {
-      "key": "2",
-      "urlPath": "/clearing-house",
-      "location": "workflow.ticket.type.document-formalization.clearing-house",
-      "attributes": {
-        "description": "Valid clearing house description"
-      }
     }
   ]
 }
