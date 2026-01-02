@@ -113,6 +113,15 @@
       "attributes": {
         "description": "Clearing house integration for document formalization"
       }
+    },
+    {
+      "key": "11",
+      "urlPath": "/",
+      "location": "strategic-room.receivables.import.tooling",
+      "attributes": {
+        "entryLabel": "Exemplo de entry label",
+        "description": "Exemplo de detail"
+      }
     }
   ]
 }
