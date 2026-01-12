@@ -80,6 +80,7 @@
               "hub.workflow.ticket.type.credit-request.form.create.tooling",
               "hub.workflow.ticket.type.credit-request.decision.create.tooling",
               "strategic-room.receivables.import.tooling",
+              "strategic-room.portfolio-management.section",
               "global.navigation-bar.menu",
               "hub.customer-detail-tabs.navigation-bar.top",
               "workflow.ticket.type.credit-request.pdf-report",
@@ -482,6 +483,37 @@
               "properties": {
                 "location": {
                   "const": "strategic-room.receivables.import.tooling"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "attributes": {
+                  "description": "The attributes that will be used for this extension module. The schema of this field is defined by the `location` field.",
+                  "type": "object",
+                  "properties": {
+                    "entryLabel": {
+                      "description": "Text displayed as an entry point to access the extension.",
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "description": {
+                      "description": "Text displayed as a tooltip for the extension.",
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": ["entryLabel", "description"]
+                }
+              },
+              "required": ["attributes"]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "location": {
+                  "const": "strategic-room.portfolio-management.section"
                 }
               }
             },

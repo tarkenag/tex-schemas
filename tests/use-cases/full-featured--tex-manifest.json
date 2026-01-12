@@ -122,6 +122,15 @@
         "entryLabel": "Exemplo de entry label",
         "description": "Exemplo de detail"
       }
+    },
+    {
+      "key": "12",
+      "urlPath": "/",
+      "location": "strategic-room.portfolio-management.section",
+      "attributes": {
+        "entryLabel": "Exemplo de entry label",
+        "description": "Exemplo de detail"
+      }
     }
   ]
 }
